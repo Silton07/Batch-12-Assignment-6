@@ -93,6 +93,29 @@ const handleCategoryClick = (categoryId, clickedElement) => {
   }
 };
 
+const loadWordDetail = async (id) =>{
+  const url=`https://openapi.programming-hero.com/api/plant/${id}`
+ const res = await fetch(url);
+ const details = await res.json();
+ displayWordDetails(details.plants);
+};
+const displayWordDetails = (plant) => {
+  console.log(plant)
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+      <div>
+        <h2> ${plant.name} </h2>
+        <img class="w-full max-h-65 py-4" src="${plant.image}" alt="">
+        <h3>Category: ${plant.category}</h3>
+        <h4>Price: ${plant.price}</h4>
+        <p>Description: ${plant.description}</p>
+      </div>
+  
+  `
+  document.getElementById("word_modal").showModal();
+}
+
+
 const showCards = (plants) => {
   cardContainer.innerHTML = "";
   if (plants.length === 0) {
@@ -100,6 +123,7 @@ const showCards = (plants) => {
       '<p class="text-center col-span-full text-gray-500">No plants found in this category.</p>';
     return;
   }
+  
   plants.forEach((plant) => {
     const cardDiv = document.createElement("div");
     cardDiv.classList.add(
@@ -123,7 +147,7 @@ const showCards = (plants) => {
                 }" alt="">
             </div>
             <div>
-                <h2 class="font-bold my-1 cursor-pointer text-lg" onclick="showPlantDetails('${
+                <h2 onclick="loadWordDetail(${plant.id})" class="font-bold my-1 cursor-pointer text-lg" onclick="showPlantDetails('${
                   plant.id
                 }')">${plant.name}</h2>
                 <p class="text-xs opacity-80">${plant.description.slice(

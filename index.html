@@ -16,12 +16,55 @@
     * {
         font-family: "Inter", sans-serif;
     }
+      /* CSS for the custom three-dot loader */
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader-dot {
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: #15803D;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loader-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .loader-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .add-to-cart-btn {
+            cursor: pointer;
+        }
 </style>
 </head>
 <body class="bg-[#f0fdf4] ">
     <!-- navber -->
     <nav class="flex flex-col sm:flex-row justify-between items-center bg-[#15803D] text-white px-4 sm:px-14 py-4 gap-3">
-        <div>
+        <div class="flex">
+          <img class="max-w-8" src="./assets/tree icon.png" alt="">
           <h1 class="font-bold text-2xl">Green Earth</h1>
         </div>
         <div>
@@ -71,8 +114,8 @@
       </div>
 
       <!-- hero section -->
-      <div class="grid grid-cols-1 md:grid-cols-12 justify-between gap-7">
-        <div class="col-span-12 md:col-span-2">
+      <div class="grid grid-cols-1 md:grid-cols-13 justify-between gap-7">
+        <div class="col-span-13 md:col-span-3">
           <!-- categories section -->
           <h3 class="text-black text-xl">Categories</h3>
           <div class="ml-2">
@@ -92,12 +135,12 @@
         <!-- card Container -->
         <div
           id="cardContainer"
-          class="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          class="col-span-13 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         ></div>
 
         <!-- Your Cart section -->
         <div
-          class="col-span-12 md:col-span-3 bg-white p-4 top-24 rounded-lg shadow-lg"
+          class="col-span-13 md:col-span-3 bg-white p-4 top-24 rounded-lg shadow-lg"
         >
           <h3 class="text-black text-xl font-bold mb-4">Your Cart</h3>
           <div id="cartItems" class="space-y-2"></div>
@@ -117,21 +160,21 @@
     </main>
       
        <!-- About section -->
-    <section>
+    <section class="max-w-[850px] mx-auto">
 
-      <h1 class="text-center font-bold text-xl pt-10">About the Campaign</h1>
+      <h1 class="text-center font-bold text-xl pt-8">About the Campaign</h1>
 
       <div class="flex flex-col md:flex-row items-center justify-center py-10 gap-6 m-2">
 
         <div>
-          <img src="assets/about.png" class="w-64 h-64 md:w-[25rem] md:h-[25rem]" alt=""/>
+          <img src="assets/about.png" class=" md:max-w-60 md:h-80" alt=""/>
         </div>
         <div class="pl-0 md:pl-2 w-full md:w-1/2">
 
-          <p>Green Earth is a global tree plantation initiative dedicated to
-          fighting <br/>climate change. Since our start, we’ve planted over
-          500,000 trees<br/>worldwide. By joining our campaign, you help restore forests, create
-          <br/>habitats for wildlife, and combat global warming. . . .</p>
+          <p class="text-justify">Green Earth is a global tree plantation initiative dedicated to
+          fighting climate change. Since our start, we’ve planted over
+          500,000 trees worldwide. By joining our campaign, you help restore forests, create
+          habitats for wildlife, and combat global warming. . . .</p>
 
           <ul class="list-disc list-inside pl-2 mt-4">
             <li>Restoration of natural habitats</li>
@@ -184,6 +227,24 @@
      <footer class="bg-[#14532d] text-center p-2 text-white font-normal">
         <h4>© 2025 Green Earth. All Rights Reserved.</h4>
      </footer>
+
+
+
+     <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="details-container">
+     
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
    <script src="./script.js"></script>
 </body>
 </html>
