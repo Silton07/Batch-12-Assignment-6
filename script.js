@@ -104,11 +104,21 @@ const displayWordDetails = (plant) => {
   const detailsBox = document.getElementById("details-container");
   detailsBox.innerHTML = `
       <div>
-        <h2> ${plant.name} </h2>
-        <img class="w-full max-h-65 py-4" src="${plant.image}" alt="">
-        <h3>Category: ${plant.category}</h3>
-        <h4>Price: ${plant.price}</h4>
-        <p>Description: ${plant.description}</p>
+        <h2 class="font-bold text-2xl modal-title">${plant.name}</h2>
+        <img class="object-cover rounded-xl w-full max-h-50 modal-image" src="${plant.image}" alt="">
+          <h3>
+            <span class="font-bold">Category: </span> 
+            <span class="text-gray-600 modal-category">${plant.category}</span>
+        </h3>
+              <h3>
+            <span class="font-bold">Price: </span> <span class="text-gray-600">৳</span>
+            <span
+                class="text-gray-600 modal-price">${plant.price}</span>
+        </h3>
+            <h3 class="text-justify">
+            <span class="font-bold">Description: </span> 
+            <span class="text-gray-600 modal-description text-justify">${plant.description}</span>
+        </h3>
       </div>
   
   `
